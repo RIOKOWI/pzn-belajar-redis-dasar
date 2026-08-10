@@ -49,3 +49,10 @@ contoh :
 [SLOW APPS](Arch/SLOW-APPS.excalidraw.png)
 <br>
 [HEAVY REQUEST](Arch/HEAVY-REQUEST.excalidraw.png)
+<br>
+[DELAYED JOB](Arch/DELAYED-JOB.excalidraw.png)
+
+## Dan masih banyak lainnya
+- Rata-rata redis digunakan untuk mempercepat aplikasi yang lambat
+- Dan juga redis biasa digunakan untuk caching, menyimpan data secara sementara
+
