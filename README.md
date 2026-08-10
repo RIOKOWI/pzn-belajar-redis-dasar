@@ -94,3 +94,25 @@ redis-server config/redis.conf
 - Kita bisa menggunakan database sejumlah maksimal sesuai dengan konfigurasi yang kita gunakan di file konfigurasi
 
 * note : cari aja variable databases di file `config\redis.conf` kalau ingin di ubah ubah, setelah di ubah server harus di stop lalu start ulang
+
+## Operasi Database
+
+| Operasi Database | Keterangan |
+|------|------|
+| select database  | memilih atau pindah database   |
+
+
+contoh :
+
+```bash
+127.0.0.1:6379> select 0
+OK
+127.0.0.1:6379> select 1
+OK
+127.0.0.1:6379[1]> select 2
+OK
+127.0.0.1:6379[2]> select 3
+OK
+127.0.0.1:6379[3]> select 4
+OK
+```
