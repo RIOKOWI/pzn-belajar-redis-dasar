@@ -56,3 +56,21 @@ contoh :
 - Rata-rata redis digunakan untuk mempercepat aplikasi yang lambat
 - Dan juga redis biasa digunakan untuk caching, menyimpan data secara sementara
 
+# How to Run Redis in memurai
+
+```bash
+C:\Users\owi>memurai-cli
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379>
+```
+
+# Configuration
+
+## Configuration File
+
+- Saat menjalankan redis, redis tidak butuh file konfigurasi
+- Namun jika tidak menggunakan file konfigurasi, redis akan berjalan menggunakan konfigurasi default
+- Ada baiknya kita membuat file konfigurasi agar pengaturannya bisa diubah
+- `https://github.com/redis/redis/blob/7.0/redis.conf`
+
