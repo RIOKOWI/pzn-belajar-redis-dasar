@@ -10,3 +10,16 @@
 - Redis adalah sistem basis data berbasis key-value
 - Paradigma key-value adalah paradigma dimana data disimpan dalam bentuk pair (key-value)
 - Key mirip dengan primary key dari data, sedangkan value adalah isi dari datanya
+
+
+contoh :
+
+| Key | Value |
+|------|------|
+| K1  | AAA,BBB,CCC   |
+| K2  | 1,2,3,4,5   |
+| K3  | DDD,AAA   |
+| K4  | AAA,2,01/01/2022   |
+| K5  | 3,344,5555   |
+
+* note : hanya bisa mengambil data dari key nya bukan dari value nya
