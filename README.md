@@ -42,3 +42,8 @@ contoh :
 - Redis menggunakan memory sebagai media penyimpanan utama, otomatis harga memory lebih mahal dibandingkan disk
 - Untuk menggunakan Redis, kita perlu lihat kasusnya secara detail
 
+contoh :
+
+[SLOW DB](Arch/SLOW-DB.excalidraw.png)
+<br>
+[SLOW APPS](Arch/SLOW-APPS.excalidraw.png)
