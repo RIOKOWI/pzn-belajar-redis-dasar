@@ -74,3 +74,14 @@ PONG
 - Ada baiknya kita membuat file konfigurasi agar pengaturannya bisa diubah
 - `https://github.com/redis/redis/blob/7.0/redis.conf`
 
+## Menjalankan redis server sesuai file config
+- untuk windows
+```bash
+memurai.exe "C:/Users/owi/pzn-belajar-redis-dasar/config/redis.conf"
+```
+
+- untuk linux/mac
+```bash
+redis-server config/redis.conf
+```
+
