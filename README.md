@@ -85,3 +85,12 @@ memurai.exe "C:/Users/owi/pzn-belajar-redis-dasar/config/redis.conf"
 redis-server config/redis.conf
 ```
 
+# Database
+## Database
+- Redis memiliki konsep database seperti pada relational database mysql atau postgre
+- Di redis kita bisa membuat database dan menggunakan database nya
+- Namun sedikit berbeda, jika di relational database kita bisa membuat database dengan menggunakan nama database, di redis kita hanya bisa menggunakan angka sebagai database
+- Secara default database di redis adalah 0 (nol)
+- Kita bisa menggunakan database sejumlah maksimal sesuai dengan konfigurasi yang kita gunakan di file konfigurasi
+
+* note : cari aja variable databases di file `config\redis.conf` kalau ingin di ubah ubah, setelah di ubah server harus di stop lalu start ulang
