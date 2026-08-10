@@ -47,3 +47,5 @@ contoh :
 [SLOW DB](Arch/SLOW-DB.excalidraw.png)
 <br>
 [SLOW APPS](Arch/SLOW-APPS.excalidraw.png)
+<br>
+[HEAVY REQUEST](Arch/HEAVY-REQUEST.excalidraw.png)
