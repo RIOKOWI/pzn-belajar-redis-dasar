@@ -31,3 +31,14 @@ contoh :
 contoh :
 
 [IN MEMORY DATABASE](Arch/IN-MEMORY-DB.excalidraw.png)
+<br>
+[KENAPA PILIH REDIS DARIPADA YANG LAIN ?](https://db-engines.com/en/ranking/key-value+store)
+
+
+# Kapan Butuh Redis?
+
+## Kapan Butuh Redis?
+- Saat kita membuat aplikasi, tidak langsung wajib menggunakan Redis
+- Redis menggunakan memory sebagai media penyimpanan utama, otomatis harga memory lebih mahal dibandingkan disk
+- Untuk menggunakan Redis, kita perlu lihat kasusnya secara detail
+
