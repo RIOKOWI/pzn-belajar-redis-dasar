@@ -27,3 +27,7 @@ contoh :
 ## Apa Itu In-Memory Database?
 - Redis menyimpan datanya di memory, namun kita bisa memintanya untuk menyimpan datanya secara regular permanen di disk. 
 - Data di disk hanya dijadikan backup ketika redis berjalan ulang, selama redis berjalan, redis hanya akan melakukan manipulasi data ke memory
+
+contoh :
+
+[IN MEMORY DATABASE](Arch/IN-MEMORY-DB.excalidraw.png)
