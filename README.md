@@ -121,3 +121,16 @@ OK
 - Redis sebenarnya mendukung struktur data yang banyak, seperti String, List, Set, dan lain-lain
 - Namun yang paling sering digunakan adalah struktur data String
 - Struktur data lainnya akan kita bahas di kelas terpisah, yaitu kelas Redis Data Structure
+
+## Operasi Data String
+
+| Operasi | Keterangan |
+|------|------|
+| set key value  | mengubah string value dari key   |
+| get key  | mendapatkan value menggunakan key   |
+| exists key  | mengecek apakah key memiliki value   |
+| del key [key ...]  | menghapus menggunakan key   |
+| append key value  | menambah data value ke key   |
+| keys pattern  | mencari key menggunakan patterns   | 
+
+* note: keys pattern tidak di rekomendasikan karna bisa lambat kalau di suruh scan semua data
