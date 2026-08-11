@@ -101,7 +101,6 @@ redis-server config/redis.conf
 |------|------|
 | select database  | memilih atau pindah database   |
 
-
 contoh :
 
 ```bash
@@ -116,3 +115,9 @@ OK
 127.0.0.1:6379[3]> select 4
 OK
 ```
+
+# Strings
+## Struktur Data Redis
+- Redis sebenarnya mendukung struktur data yang banyak, seperti String, List, Set, dan lain-lain
+- Namun yang paling sering digunakan adalah struktur data String
+- Struktur data lainnya akan kita bahas di kelas terpisah, yaitu kelas Redis Data Structure
