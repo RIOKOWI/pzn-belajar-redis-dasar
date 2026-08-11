@@ -134,3 +134,40 @@ OK
 | keys pattern  | mencari key menggunakan patterns   | 
 
 * note: keys pattern tidak di rekomendasikan karna bisa lambat kalau di suruh scan semua data
+
+```bash
+127.0.0.1:6379> select 19
+OK
+127.0.0.1:6379[19]> set test "lightspeed"
+OK
+127.0.0.1:6379[19]> get test
+"lightspeed"
+127.0.0.1:6379[19]> exists key
+(integer) 0
+127.0.0.1:6379[19]> exists test
+(integer) 1
+127.0.0.1:6379[19]> keys test*
+1) "test"
+127.0.0.1:6379[19]> append tes "dudung"
+(integer) 6
+127.0.0.1:6379[19]> append test "dudung"
+(integer) 16
+127.0.0.1:6379[19]> get test
+"lightspeeddudung"
+127.0.0.1:6379[19]> append test " cungpret"
+(integer) 25
+127.0.0.1:6379[19]> get test
+"lightspeeddudung cungpret"
+127.0.0.1:6379[19]> keys pattern tes*
+(error) ERR wrong number of arguments for 'keys' command
+127.0.0.1:6379[19]> keys tes*
+1) "tes"
+2) "test"
+127.0.0.1:6379[19]> del tes
+(integer) 1
+127.0.0.1:6379[19]> keys tes*
+1) "test"
+127.0.0.1:6379[19]> keys *
+1) "test"
+127.0.0.1:6379[19]> 
+```
