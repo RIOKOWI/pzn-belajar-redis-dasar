@@ -299,8 +299,19 @@ OK
 ## Race Condition
 ```js
 // contoh race condition
-var value = await redis.get("key");
+var value = await redis.get("key"); // key value 10
 value = Number(value) + 1;
 await redis.set("key", value);
-jadi saat ada dua orang increment di detik yang sama code tersebut menyebabkan race condition, seharusnya per orang menyimpan value sebelas alhasil kedua orang tersebut menyimpan value 11 yang sama
+// jadi saat ada dua orang increment di detik yang sama code tersebut menyebabkan race condition, seharusnya per orang menyimpan value sebelas alhasil kedua orang tersebut menyimpan value 11 yang sama
 ```
+
+## Operasi Increment & Decrement
+
+| Operasi | Keterangan |
+|------|------|
+| incr key  | Increment the integer value of a key by one   |
+| decr key seconds value  | Decrement the integer value of a key by one   |
+| incrby key increment  | Increment the integer value of a key by the given amount   |
+| decrby key decrement  | Decrement the integer value of a key by the given number   |
+
+* note : isi key nya harus angka/int jangan teks/string
