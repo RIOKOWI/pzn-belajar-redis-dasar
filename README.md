@@ -296,4 +296,11 @@ OK
 - Namun jika operasi dilakukan secara paralel dan dalam waktu yang sangat cepat, hal ini bisa memungkinkan race condition
 - Untungnya redis memiliki operasi untuk melakukan increment dan decrement
 
-
+## Race Condition
+```js
+// contoh race condition
+var value = await redis.get("key");
+value = Number(value) + 1;
+await redis.set("key", value);
+jadi saat ada dua orang increment di detik yang sama code tersebut menyebabkan race condition, seharusnya per orang menyimpan value sebelas alhasil kedua orang tersebut menyimpan value 11 yang sama
+```
