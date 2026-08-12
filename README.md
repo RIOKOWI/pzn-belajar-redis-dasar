@@ -349,8 +349,32 @@ await redis.set("key", value);
 
 ## Operasi Flush
 
-
 | Operasi | Keterangan |
 |------|------|
 | flushdb  | Remove all keys from the current database  |
 | flushall  | Remove all keys from all databases  |
+
+* note : konsep kalo di laravel php artisan migrate:fresh/php artisan optimize:clear
+
+```bash
+127.0.0.1:6379[19]> flushdb
+OK
+127.0.0.1:6379[19]> get rio
+(nil)
+127.0.0.1:6379[19]> keys *
+(empty array)
+127.0.0.1:6379[19]> set cungpret "halomo"
+OK
+127.0.0.1:6379[19]> keys *
+1) "cungpret"
+127.0.0.1:6379[19]> set papuy "ororo"
+OK
+127.0.0.1:6379[19]> keys *
+1) "papuy"
+2) "cungpret" 
+127.0.0.1:6379[19]> flushall
+OK
+127.0.0.1:6379[19]> keys *
+(empty array)
+127.0.0.1:6379[19]> 
+```
