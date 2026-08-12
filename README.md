@@ -193,3 +193,32 @@ OK
 "ng nip"
 127.0.0.1:6379[19]> 
 ```
+
+
+## Operasi Multiple Data String
+
+| Operasi | Keterangan |
+|------|------|
+| mget key [key ...]  | Get the values of all the given keys   |
+| mset key value [key value ...]  | Set multiple keys to multiple values   |
+
+```bash
+127.0.0.1:6379[19]> mget test kosongdua
+1) "dadah"
+2) "jokowi"
+127.0.0.1:6379[19]> mset dudung "100" dodong "200"
+OK
+127.0.0.1:6379[19]> keys *
+1) "dudung"
+2) "kosongdua"
+3) "[kosongdua"
+4) "dodong"
+5) "tes"
+6) "test"
+127.0.0.1:6379[19]> mget dudung dodong test kosongdua
+1) "100"
+2) "200"
+3) "dadah"
+4) "jokowi"
+127.0.0.1:6379[19]> 
+```
