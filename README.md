@@ -314,4 +314,28 @@ await redis.set("key", value);
 | incrby key increment  | Increment the integer value of a key by the given amount   |
 | decrby key decrement  | Decrement the integer value of a key by the given number   |
 
-* note : isi key nya harus angka/int jangan teks/string
+* note : isi key nya harus berupa angka/int jangan teks/string
+
+```bash
+127.0.0.1:6379[19]> incr counter
+(integer) 1
+127.0.0.1:6379[19]> incr counter
+(integer) 2
+127.0.0.1:6379[19]> incr counter
+(integer) 3
+127.0.0.1:6379[19]> get counter
+"3"
+127.0.0.1:6379[19]> decr counter
+(integer) 2
+127.0.0.1:6379[19]> decr counter
+(integer) 1
+127.0.0.1:6379[19]> decr counter
+(integer) 0
+127.0.0.1:6379[19]> incrby counter 5
+(integer) 5
+127.0.0.1:6379[19]> get counter
+"5"
+127.0.0.1:6379[19]> decrby counter 5
+(integer) 0
+127.0.0.1:6379[19]> 
+```
