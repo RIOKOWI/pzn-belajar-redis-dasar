@@ -346,3 +346,11 @@ await redis.set("key", value);
 - Kadang kita butuh mengosongkan seluruh data di redis, misal ketika terjadi kesalahan kode sehingga menyebabkan data di redis salah
 - Menghapus data di redis satu-satu menggunakan operasi delete bukanlah hal yang bijak
 - Redis memiliki fitur untuk menghapus seluruh data di database redis, yaitu operasi flush
+
+## Operasi Flush
+
+
+| Operasi | Keterangan |
+|------|------|
+| flushdb  | Remove all keys from the current database  |
+| flushall  | Remove all keys from all databases  |
