@@ -282,6 +282,18 @@ OK
 (integer) 1
 127.0.0.1:6379[19]> ttl rio
 (integer) 1
+127.0.0.1:6379[19]> get rio
+(nil)
 ```
 
 * note : set expire di perlukan agar memory/RAM tidak di bebani oleh data data yang di perlukan
+
+
+# Increment & Decrement
+## Increment & Decrement
+
+- Operasi Increment & Decrement sekilas sangat mudah dilakukan, hanya tinggal mengupdate data yang di redis dengan data baru (data lama ditambah 1)
+- Namun jika operasi dilakukan secara paralel dan dalam waktu yang sangat cepat, hal ini bisa memungkinkan race condition
+- Untungnya redis memiliki operasi untuk melakukan increment dan decrement
+
+
