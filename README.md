@@ -339,3 +339,10 @@ await redis.set("key", value);
 (integer) 0
 127.0.0.1:6379[19]> 
 ```
+
+# Flush
+## Flush
+
+- Kadang kita butuh mengosongkan seluruh data di redis, misal ketika terjadi kesalahan kode sehingga menyebabkan data di redis salah
+- Menghapus data di redis satu-satu menggunakan operasi delete bukanlah hal yang bijak
+- Redis memiliki fitur untuk menghapus seluruh data di database redis, yaitu operasi flush
