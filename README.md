@@ -171,3 +171,25 @@ OK
 1) "test"
 127.0.0.1:6379[19]> 
 ```
+
+## Operasi Range Data String
+
+| Operasi | Keterangan |
+|------|------|
+| setrange key offset value  | mengubah value dari offset yang ditentukan   |
+| getrange key start end  | mengambil value dari range yang ditentukan   |
+
+
+```bash
+127.0.0.1:6379[19]> setrange kosongdua 4 "dudung"
+(integer) 12
+127.0.0.1:6379[19]> get kosongdua
+"dudududungon"
+127.0.0.1:6379[19]> setrange kosongdua 0 "dudung nipon"
+(integer) 12
+127.0.0.1:6379[19]> get kosongdua
+"dudung nipon"
+127.0.0.1:6379[19]> getrange kosongdua 4 9
+"ng nip"
+127.0.0.1:6379[19]> 
+```
