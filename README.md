@@ -238,3 +238,50 @@ OK
 | expire key seconds  | Set a key's time to live in seconds   |
 | setex key seconds value  | Set the value and expiration of a key   |
 | ttl key  | Get the time to live for a key   |
+
+```bash
+127.0.0.1:6379[19]> expire rio 10
+(integer) 1
+127.0.0.1:6379[19]> ttl rio
+(integer) 3
+127.0.0.1:6379[19]> ttl rio
+(integer) 1
+127.0.0.1:6379[19]> ttl rio
+(integer) 0
+127.0.0.1:6379[19]> setex rio 10 "parung"
+OK
+127.0.0.1:6379[19]> ttl rio
+(integer) 8
+127.0.0.1:6379[19]> ttl rio
+(integer) 6
+127.0.0.1:6379[19]> ttl rio
+(integer) 5
+127.0.0.1:6379[19]> ttl rio
+(integer) 5
+127.0.0.1:6379[19]> ttl rio
+(integer) 4
+127.0.0.1:6379[19]> ttl rio
+(integer) 4
+127.0.0.1:6379[19]> ttl rio
+(integer) 3
+127.0.0.1:6379[19]> ttl rio
+(integer) 3
+127.0.0.1:6379[19]> ttl rio
+(integer) 3
+127.0.0.1:6379[19]> ttl rio
+(integer) 2
+127.0.0.1:6379[19]> ttl rio
+(integer) 2
+127.0.0.1:6379[19]> ttl rio
+(integer) 2
+127.0.0.1:6379[19]> ttl rio
+(integer) 1
+127.0.0.1:6379[19]> ttl rio
+(integer) 1
+127.0.0.1:6379[19]> ttl rio
+(integer) 1
+127.0.0.1:6379[19]> ttl rio
+(integer) 1
+```
+
+* note : set expire di perlukan agar memory/RAM tidak di bebani oleh data data yang di perlukan
