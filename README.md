@@ -445,3 +445,41 @@ OK
 | multi  | Mark the start of a transaction block   |
 | exec  | Execute all commands issued after MULTI   |
 | discard  | Discard all commands issued after MULTI   |
+
+
+- example 
+```bash
+127.0.0.1:6379> multi # memulai transaction
+OK
+127.0.0.1:6379(TX)> set rm "ronaldo" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> set brc "neymar" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> set united "rooney" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> exec # commit transaction
+1) OK # success resspone
+2) OK
+3) OK
+127.0.0.1:6379> keys * # scan/cek semua keys
+1) "brc"
+2) "rm"
+3) "united"
+127.0.0.1:6379> get brc # cek isi key
+"neymar"
+127.0.0.1:6379> multi # memulai transaction
+OK
+127.0.0.1:6379(TX)> set c1 "komeng" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> set c2 "adul" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> set c3 "bedugul" # set key & value
+QUEUED
+127.0.0.1:6379(TX)> discard # rollback transaction
+OK
+127.0.0.1:6379> keys *
+1) "brc"
+2) "rm"
+3) "united"
+127.0.0.1:6379> 
+```
