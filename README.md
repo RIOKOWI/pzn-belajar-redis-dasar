@@ -493,3 +493,37 @@ OK
 - Kadang ada kasus kita ingin mendebug aplikasi saat berkomunikasi dengan redis
 - Redis memiliki fitur monitor, yaitu fitur untuk memonitor semua request yang masuk ke redis server
 - Dengan fitur ini kita bisa mudah mendebug jika ternyata ada perintah yang salah yang dikirim oleh aplikasi kita ke redis server
+
+## Operasi Monitor
+
+| Operasi | Keterangan |
+|------|------|
+| monitor  | Listen for all requests received by the server in real time  |
+
+- example
+
+### Client 1
+```bash
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> get rio
+(nil)
+127.0.0.1:6379> get rm
+"ronaldo"
+127.0.0.1:6379> mget rm brc united
+1) "ronaldo"
+2) "neymar"
+3) "rooney"
+127.0.0.1:6379> 
+```
+
+### Client 2 (MONITOR)
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli 
+127.0.0.1:6379> monitor
+OK
+1786606642.250807 [0 127.0.0.1:49960] "ping"
+1786606656.245558 [0 127.0.0.1:49960] "get" "rio"
+1786606661.499804 [0 127.0.0.1:49960] "get" "rm"
+1786606743.274778 [0 127.0.0.1:49960] "mget" "rm" "brc" "united"
+```
