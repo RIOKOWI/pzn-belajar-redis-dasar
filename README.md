@@ -727,3 +727,9 @@ OK
 ```
 
 * note : key masih tersimpan setelah redis server di matikan lalu di hidupkan lagi di karenakan keys sudah tersimpan di file `dump.rdb` jadi pada saat redis server di nyalakan lagi dia akan meload data dari file `dump.rdb` alhasil keys keys tidak hilang karna sudah tersimpan di disk menggunakan perintah `save`
+
+# Eviction
+## Ketika Memory Redis Penuh
+- Ketika memory redis penuh, maka redis secara default akan mereject semua request penyimpanan data
+- Hal ini mungkin menjadi masalah ketika kita hanya menggunakan redis sebagai cache untuk media penyimpanan sementara
+- Kadang akan sangat berguna jika memory penuh, redis bisa secara otomatis menghapus data yang sudah jarang digunakan
