@@ -398,6 +398,16 @@ Get-Content .\input-file.txt | redis-cli -h localhost -p 6379 -n 0 --pipe
 Get-Content .\input-file.txt | memurai-cli -h localhost -p 6379 -n 0 --pipe # jika pakai memurai
 ```
 
+| Bagian | Fungsi |
+|--------|--------|
+| `Get-Content` | Membaca isi file |
+| `\|` | Mengirim output ke command berikutnya |
+| `memurai-cli` | Redis Client |
+| `-h localhost` | Host Redis |
+| `-p 6379` | Port Redis |
+| `-n 0` | Menggunakan Database 0 |
+| `--pipe` | Mengirim seluruh command secara streaming (pipeline) ke Redis |
+
 - response 
 ```bash
 PS C:\Users\owi\pzn-belajar-redis-dasar> Get-Content .\input-file.txt | memurai-cli -h localhost -p 6379 -n 0 --pipe
@@ -426,3 +436,12 @@ OK
 # Transaction
 - Seperti pada database relational, redis juga mendukung transaction
 - Proses transaction adalah proses dimana kita mengirimkan beberapa perintah, dan perintah tersebut akan dianggap sukses jika semua perintah sukses, jika gagal maka semua perintah harus dibatalkan
+
+## Operasi Transaction
+
+
+| Operasi | Keterangan |
+|------|------|
+| multi  | Mark the start of a transaction block   |
+| exec  | Execute all commands issued after MULTI   |
+| discard  | Discard all commands issued after MULTI   |
