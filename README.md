@@ -549,5 +549,28 @@ OK
 
 | Operasi | Keterangan |
 |------|------|
-| info  | Get information and statistics about the server  |
-| config get <key>  | Get the value of a configuration parameter from redis.conf  |
+| client list  | Get the list of client connections  |
+| client id  | Returns the client ID for the current connection  |
+| client kill ip:port  | Kill the connection of a client  |
+
+
+- example
+```bash
+127.0.0.1:6379> client list # cek semua client information
+id=7 addr=127.0.0.1:49960 laddr=127.0.0.1:6379 fd=11 name= age=5044 idle=0 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 watch=0 qbuf=26 qbuf-free=20448 argv-mem=10 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=22810 events=r cmd=client|list user=default redir=-1 resp=2 lib-name= lib-ver= io-thread=0 tot-net-in=940 tot-net-out=229649 tot-cmds=30
+id=10 addr=127.0.0.1:50808 laddr=127.0.0.1:6379 fd=12 name= age=3 idle=3 flags=N db=0 sub=0 psub=0 ssub=0 multi=-1 watch=0 qbuf=0 qbuf-free=0 argv-mem=0 multi-mem=0 rbs=1024 rbp=0 obl=0 oll=0 omem=0 tot-mem=2304 events=r cmd=command|docs user=default redir=-1 resp=2 lib-name= lib-ver= io-thread=0 tot-net-in=27 tot-net-out=222149 tot-cmds=1
+127.0.0.1:6379> client id # cek id client
+(integer) 7
+127.0.0.1:6379> client kill 127.0.0.1:50808 # stop client lain
+OK
+127.0.0.1:6379> 
+```
+
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli
+127.0.0.1:6379> client id
+(integer) 10
+127.0.0.1:6379> ping
+Error: connection aborted
+PS C:\Users\owi\pzn-belajar-redis-dasar> 
+```
