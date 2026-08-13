@@ -59,8 +59,8 @@ contoh :
 # How to Run Redis in memurai
 
 ```bash
-C:\Users\owi>memurai-cli
-127.0.0.1:6379> ping
+C:\Users\owi>memurai-cli # masuk ke redis cli via memurai
+127.0.0.1:6379> ping # tes koneksi
 PONG
 127.0.0.1:6379>
 ```
@@ -77,7 +77,7 @@ PONG
 ## Menjalankan redis server sesuai file config
 - untuk windows
 ```bash
-memurai.exe "C:/Users/owi/pzn-belajar-redis-dasar/config/redis.conf"
+memurai.exe "C:/Users/owi/pzn-belajar-redis-dasar/config/redis.conf" # jalanin redis server sesuai dengan isi file config, di dalam file config bisa settin beberapa db
 ```
 
 - untuk linux/mac
@@ -87,7 +87,7 @@ redis-server config/redis.conf
 
 # Database
 ## Database
-- Redis memiliki konsep database seperti pada relational database mysql atau postgre
+- Redis memiliki konsep database seperti pada relational database mysql atau postgree
 - Di redis kita bisa membuat database dan menggunakan database nya
 - Namun sedikit berbeda, jika di relational database kita bisa membuat database dengan menggunakan nama database, di redis kita hanya bisa menggunakan angka sebagai database
 - Secara default database di redis adalah 0 (nol)
@@ -104,7 +104,7 @@ redis-server config/redis.conf
 contoh :
 
 ```bash
-127.0.0.1:6379> select 0
+127.0.0.1:6379> select 0 # pilih database pertama
 OK
 127.0.0.1:6379> select 1
 OK
@@ -138,37 +138,34 @@ OK
 ```bash
 127.0.0.1:6379> select 19
 OK
-127.0.0.1:6379[19]> set test "lightspeed"
+127.0.0.1:6379[19]> set test "lightspeed" # set key value
 OK
-127.0.0.1:6379[19]> get test
+127.0.0.1:6379[19]> get test # melihat value dari key
 "lightspeed"
 127.0.0.1:6379[19]> exists key
 (integer) 0
-127.0.0.1:6379[19]> exists test
+127.0.0.1:6379[19]> exists test # cek apakah key mempunyai value
 (integer) 1
-127.0.0.1:6379[19]> keys test*
+127.0.0.1:6379[19]> keys test* # scan/cek seluruh keys dengan prefix test
 1) "test"
-127.0.0.1:6379[19]> append tes "dudung"
+127.0.0.1:6379[19]> append tes "dudung" # menambah data value ke key tes
 (integer) 6
-127.0.0.1:6379[19]> append test "dudung"
+127.0.0.1:6379[19]> append test "dudung" # menambah data value ke key test
 (integer) 16
-127.0.0.1:6379[19]> get test
+127.0.0.1:6379[19]> get test # melihat value dari key
 "lightspeeddudung"
-127.0.0.1:6379[19]> append test " cungpret"
+127.0.0.1:6379[19]> append test " cungpret" # menambah data value ke key test
 (integer) 25
-127.0.0.1:6379[19]> get test
+127.0.0.1:6379[19]> get test # melihat value dari key
 "lightspeeddudung cungpret"
-127.0.0.1:6379[19]> keys pattern tes*
-(error) ERR wrong number of arguments for 'keys' command
-127.0.0.1:6379[19]> keys tes*
+127.0.0.1:6379[19]> keys tes* # scan/cek seluruh keys dengan prefix tes
 1) "tes"
 2) "test"
-127.0.0.1:6379[19]> del tes
+127.0.0.1:6379[19]> del tes # hapus key
 (integer) 1
-127.0.0.1:6379[19]> keys tes*
+127.0.0.1:6379[19]> keys tes* # scan/cek seluruh keys dengan prefix tes
 1) "test"
-127.0.0.1:6379[19]> keys *
-1) "test"
+127.0.0.1:6379[19]> keys * # scan/cek seluruh keys
 127.0.0.1:6379[19]> 
 ```
 
@@ -181,15 +178,15 @@ OK
 
 
 ```bash
-127.0.0.1:6379[19]> setrange kosongdua 4 "dudung"
+127.0.0.1:6379[19]> setrange kosongdua 4 "dudung" # menambah value dari key index ke 4
 (integer) 12
 127.0.0.1:6379[19]> get kosongdua
 "dudududungon"
-127.0.0.1:6379[19]> setrange kosongdua 0 "dudung nipon"
+127.0.0.1:6379[19]> setrange kosongdua 0 "dudung nipon" # menambah value dari key index ke 0
 (integer) 12
 127.0.0.1:6379[19]> get kosongdua
 "dudung nipon"
-127.0.0.1:6379[19]> getrange kosongdua 4 9
+127.0.0.1:6379[19]> getrange kosongdua 4 9 # melihat value dari key index ke 4-9
 "ng nip"
 127.0.0.1:6379[19]> 
 ```
@@ -203,19 +200,19 @@ OK
 | mset key value [key value ...]  | Set multiple keys to multiple values   |
 
 ```bash
-127.0.0.1:6379[19]> mget test kosongdua
+127.0.0.1:6379[19]> mget test kosongdua # cek isi value lebih dari 1 key
 1) "dadah"
 2) "jokowi"
-127.0.0.1:6379[19]> mset dudung "100" dodong "200"
+127.0.0.1:6379[19]> mset dudung "100" dodong "200" # set lebih dari 1 key value
 OK
-127.0.0.1:6379[19]> keys *
+127.0.0.1:6379[19]> keys * # scan/cek seluruh keys
 1) "dudung"
 2) "kosongdua"
 3) "[kosongdua"
 4) "dodong"
 5) "tes"
 6) "test"
-127.0.0.1:6379[19]> mget dudung dodong test kosongdua
+127.0.0.1:6379[19]> mget dudung dodong test kosongdua # cek isi value lebih dari 1 key
 1) "100"
 2) "200"
 3) "dadah"
@@ -240,17 +237,17 @@ OK
 | ttl key  | Get the time to live for a key   |
 
 ```bash
-127.0.0.1:6379[19]> expire rio 10
+127.0.0.1:6379[19]> expire rio 10 # set waktu expired key selama 10 detik
 (integer) 1
-127.0.0.1:6379[19]> ttl rio
+127.0.0.1:6379[19]> ttl rio # cek waktu expired yang tersisa
 (integer) 3
 127.0.0.1:6379[19]> ttl rio
 (integer) 1
 127.0.0.1:6379[19]> ttl rio
 (integer) 0
-127.0.0.1:6379[19]> setex rio 10 "parung"
+127.0.0.1:6379[19]> setex rio 10 "parung" # set waktu expired value dari key selama 10 detik
 OK
-127.0.0.1:6379[19]> ttl rio
+127.0.0.1:6379[19]> ttl rio # cek waktu expired yang tersisa
 (integer) 8
 127.0.0.1:6379[19]> ttl rio
 (integer) 6
@@ -317,25 +314,25 @@ await redis.set("key", value);
 * note : isi key nya harus berupa angka/int jangan teks/string
 
 ```bash
-127.0.0.1:6379[19]> incr counter
+127.0.0.1:6379[19]> incr counter # tambah/increment key value integer
 (integer) 1
 127.0.0.1:6379[19]> incr counter
 (integer) 2
 127.0.0.1:6379[19]> incr counter
 (integer) 3
-127.0.0.1:6379[19]> get counter
+127.0.0.1:6379[19]> get counter # melihat value dari key
 "3"
-127.0.0.1:6379[19]> decr counter
+127.0.0.1:6379[19]> decr counter # mengurangi/decrement value dari key
 (integer) 2
 127.0.0.1:6379[19]> decr counter
 (integer) 1
 127.0.0.1:6379[19]> decr counter
 (integer) 0
-127.0.0.1:6379[19]> incrby counter 5
+127.0.0.1:6379[19]> incrby counter 5 # menambah/increment secara bulk value dari key
 (integer) 5
-127.0.0.1:6379[19]> get counter
+127.0.0.1:6379[19]> get counter # melihat isi value dari key
 "5"
-127.0.0.1:6379[19]> decrby counter 5
+127.0.0.1:6379[19]> decrby counter 5 # mengurangi/decrement secara bulk value dari key
 (integer) 0
 127.0.0.1:6379[19]> 
 ```
@@ -357,7 +354,7 @@ await redis.set("key", value);
 * note : konsep kalo di laravel php artisan migrate:fresh/php artisan optimize:clear
 
 ```bash
-127.0.0.1:6379[19]> flushdb
+127.0.0.1:6379[19]> flushdb # menghapus semua key dari db yang di gunakan
 OK
 127.0.0.1:6379[19]> get rio
 (nil)
@@ -372,7 +369,7 @@ OK
 127.0.0.1:6379[19]> keys *
 1) "papuy"
 2) "cungpret" 
-127.0.0.1:6379[19]> flushall
+127.0.0.1:6379[19]> flushall # menghapus semua key dari semua db yang tersedia
 OK
 127.0.0.1:6379[19]> keys *
 (empty array)
