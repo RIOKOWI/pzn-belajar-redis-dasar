@@ -582,3 +582,12 @@ PS C:\Users\owi\pzn-belajar-redis-dasar>
 - Secara default, ketika kita menyalakan redis server, redis server akan mendengarkan request dari semua network interface. Ini sangat berbahaya, karena bisa jadi redis terekspos secara public
 - Namun, redis punya second layer untuk pengecekan koneksi, yaitu mode protected, secara default mode protectednya aktif, artinya walaupun redis bisa diakses dari manapun, tapi redis hanya mau menerima request dari 127.0.0.1 (localhost)
 
+- example
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0
+192.168.100.6:6379> ping
+(error) DENIED Memurai is running in protected mode because protected mode is enabled and no password is set for the default user. In this mode connections are only accepted from the loopback interface. If you want to connect from external computers to Memurai you may adopt one of the following solutions: 1) Just disable protected mode sending the command 'CONFIG SET protected-mode no' from the loopback interface by connecting to Memurai from the same host the server is running, however MAKE SURE Memurai is not publicly accessible from internet if you do so. Use CONFIG REWRITE to make this change permanent. 2) Alternatively you can just disable the protected mode by editing the Memurai configuration file, and setting the protected mode option to 'no', and then restarting the server. 3) If you started the server manually just for testing, restart it with the '--protected-mode no' option. 4) Set up an authentication password for the default user. NOTE: You only need to do one of the above things in order for the server to start accepting connections from the outside.
+192.168.100.6:6379> 
+```
+
+* note : gabakal bisa kirim perintah tanpa autentikasi karna protected mode nya aktif
