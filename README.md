@@ -652,3 +652,18 @@ OK
 - Namun perlu diingat proses penyimpanan data ke disk redis tidak realtime, dia dilakukan secara scheduler dengan konfigurasi tertentu
 - Jadi jangan jadikan redis sebagai media penyimpanan persistence, gunakan redis sebagai database untuk membantu database persistence lainnya
 
+- set di file `config/redis.conf`
+
+```txt
+# Unless specified otherwise, by default Redis will save the DB:
+#   * After 3600 seconds (an hour) if at least 1 change was performed
+#   * After 300 seconds (5 minutes) if at least 100 changes were performed
+#   * After 60 seconds if at least 10000 changes were performed
+#
+# You can set these explicitly by uncommenting the following line.
+#
+save 3600 1 300 100 60 10000
+```
+* note : misal ada 50 data yang berubah redis akan tidak akan simpan ke database selama 60 detik maupun 300 detik karna 2 waktu itu membutuhkan data yang berubah minimal 100-10000 data yang berubah, jadi 50 data yang berubah akan di simpan dalam schedule waktu 3600 detik/1 jam 
+
+- file penyimpanan perubahan data di simpan di `dump.rdb`
