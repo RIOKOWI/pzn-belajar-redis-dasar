@@ -674,3 +674,56 @@ save 3600 1 300 100 60 10000
 |------|------|
 | save  | Synchronously save the dataset to disk   |
 | bgsave  | Asynchronously save the dataset to disk   |
+
+```bash
+# kondisi di redis cli
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0
+192.168.100.6:6379> auth 007 jamesbond
+OK
+192.168.100.6:6379> save
+OK
+192.168.100.6:6379> multi 
+OK
+192.168.100.6:6379(TX)> discard
+OK
+192.168.100.6:6379> select 19
+OK
+192.168.100.6:6379[19]> multi
+OK
+192.168.100.6:6379[19](TX)> set rio "cung"
+QUEUED
+192.168.100.6:6379[19](TX)> set yuuyu "nonono"
+QUEUED
+192.168.100.6:6379[19](TX)> set tek "dull"
+QUEUED
+192.168.100.6:6379[19](TX)> set wuj "kok"
+QUEUED
+192.168.100.6:6379[19](TX)> exec
+1) OK
+2) OK
+3) OK
+4) OK
+192.168.100.6:6379[19]> save
+OK
+192.168.100.6:6379[19]> 
+
+# kondsi di redis server
+[4792] 13 Aug 19:25:29.439 * DB saved on disk
+[4792] 13 Aug 19:26:37.191 * DB saved on disk
+```
+
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> ^C
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0
+192.168.100.6:6379> auth 007 jamesbond
+OK
+192.168.100.6:6379> keys *
+1) "prbw"
+2) "rm"
+3) "brc"
+4) "jkw"
+5) "united"
+192.168.100.6:6379> 
+```
+
+* note : key masih tersimpan setelah redis server di matikan lalu di hidupkan lagi di karenakan keys sudah tersimpan di file `dump.rdb` jadi pada saat redis server di nyalakan lagi dia akan meload data dari file `dump.rdb` alhasil keys keys tidak hilang karna sudah tersimpan di disk menggunakan perintah `save`
