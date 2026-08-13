@@ -1,0 +1,4 @@
+set rio "Rio Achyar"
+set jkw "Joko Widodo"
+set gibran "fufufafa"
+set rui "plenger"
