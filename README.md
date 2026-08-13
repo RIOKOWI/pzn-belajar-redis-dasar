@@ -667,3 +667,10 @@ save 3600 1 300 100 60 10000
 * note : misal ada 50 data yang berubah redis akan tidak akan simpan ke database selama 60 detik maupun 300 detik karna 2 waktu itu membutuhkan data yang berubah minimal 100-10000 data yang berubah, jadi 50 data yang berubah akan di simpan dalam schedule waktu 3600 detik/1 jam 
 
 - file penyimpanan perubahan data di simpan di `dump.rdb`
+
+## Operasi Persistence
+
+| Operasi | Keterangan |
+|------|------|
+| save  | Synchronously save the dataset to disk   |
+| bgsave  | Asynchronously save the dataset to disk   |
