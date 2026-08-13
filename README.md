@@ -533,3 +533,11 @@ OK
 - Kadang kita butuh mendapatkan informasi dan statistik redis server
 - Seperti jumlah memory yang sudah terpakai, konfigurasi dan lain-lain
 - Redis memiliki fitur ini, sehingga kita sangat mudah untuk mendapat informasi server dan memonitor nya
+
+
+## Operasi Server Information
+
+| Operasi | Keterangan |
+|------|------|
+| info  | Get information and statistics about the server  |
+| config get <key>  | Get the value of a configuration parameter from redis.conf  |
