@@ -425,3 +425,7 @@ OK
 "Joko Widodo"
 127.0.0.1:6379> 
 ```
+
+# Transaction
+- Seperti pada database relational, redis juga mendukung transaction
+- Proses transaction adalah proses dimana kita mengirimkan beberapa perintah, dan perintah tersebut akan dianggap sukses jika semua perintah sukses, jika gagal maka semua perintah harus dibatalkan
