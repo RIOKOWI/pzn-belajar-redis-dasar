@@ -574,3 +574,11 @@ PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli
 Error: connection aborted
 PS C:\Users\owi\pzn-belajar-redis-dasar> 
 ```
+
+
+
+# Protected Mode
+## Protected Mode
+- Secara default, ketika kita menyalakan redis server, redis server akan mendengarkan request dari semua network interface. Ini sangat berbahaya, karena bisa jadi redis terekspos secara public
+- Namun, redis punya second layer untuk pengecekan koneksi, yaitu mode protected, secara default mode protectednya aktif, artinya walaupun redis bisa diakses dari manapun, tapi redis hanya mau menerima request dari 127.0.0.1 (localhost)
+
