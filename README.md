@@ -387,3 +387,8 @@ OK
 - Jika kita mengirim satu per satu datanya, maka akan butuh waktu lama untuk selesai
 - Redis mendukung operasi bulk via pipeline, dimana kita bisa mengirim beberapa perintah sekaligus dalam satu request
 - Namun perlu diketahui, server redis tidak akan membalas tiap perintah yang dikirim via pipeline
+
+## Operasi Pipeline Menggunakan Redis Cli
+```bash
+redis-cli -h host -p port -n database --pipe < input-file
+```
