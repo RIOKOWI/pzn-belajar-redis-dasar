@@ -610,3 +610,21 @@ PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n
 - Authorization adalah prose memberi hak akses terhadap identitas yang telah berhasil melewati proses authentication
 - Redis mendukung hal ini, jadi kita bisa membatasi hak akses apa saja yang bisa dilakukan oleh identitas yang kita buat
 - `https://redis.io/docs/management/security/acl/ `
+
+
+- set auth di file `config\redis.conf`
+```txt
+user default on +@connection
+user 007 on +@all ~* >jamesbond
+```
+
+
+- example auth
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0 # saat pertama masuk cli user nya default
+192.168.100.6:6379> ping
+(error) NOAUTH Authentication required. # user default == tidak bisa akses command selain masuk koneksi
+192.168.100.6:6379> select 0
+(error) NOAUTH Authentication required. # user default == tidak bisa akses command selain masuk koneksi
+192.168.100.6:6379> 
+```
