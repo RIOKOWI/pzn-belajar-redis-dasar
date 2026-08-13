@@ -527,3 +527,9 @@ OK
 1786606661.499804 [0 127.0.0.1:49960] "get" "rm"
 1786606743.274778 [0 127.0.0.1:49960] "mget" "rm" "brc" "united"
 ```
+
+
+# Server Information
+- Kadang kita butuh mendapatkan informasi dan statistik redis server
+- Seperti jumlah memory yang sudah terpakai, konfigurasi dan lain-lain
+- Redis memiliki fitur ini, sehingga kita sangat mudah untuk mendapat informasi server dan memonitor nya
