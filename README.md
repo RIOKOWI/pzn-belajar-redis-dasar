@@ -541,3 +541,9 @@ OK
 |------|------|
 | info  | Get information and statistics about the server  |
 | config get <key>  | Get the value of a configuration parameter from redis.conf  |
+
+# Client Connection
+
+- Redis menyimpan semua informasi client di server
+- Hal ini memudahkan kita untuk melihat daftar client, dan juga mengecek jika ada anomali, seperti terlalu banyak koneksi client ke redis
+
