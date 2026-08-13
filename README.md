@@ -620,11 +620,26 @@ user 007 on +@all ~* >jamesbond
 
 
 - example auth
+* user default
 ```bash
 PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0 # saat pertama masuk cli user nya default
 192.168.100.6:6379> ping
 (error) NOAUTH Authentication required. # user default == tidak bisa akses command selain masuk koneksi
 192.168.100.6:6379> select 0
 (error) NOAUTH Authentication required. # user default == tidak bisa akses command selain masuk koneksi
+192.168.100.6:6379> 
+```
+
+* user 007
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0
+192.168.100.6:6379> auth 007 jamesbond # auth <username> <pass>
+OK
+192.168.100.6:6379> mset jkw "yo ndak tawu" prbw "ndasmu" # bisa semua command karna di config user 007 di set +@all yang artinya bisa menjalankan semua perintah/command
+OK
+192.168.100.6:6379> mget gibran jkw prbw
+1) (nil)
+2) "yo ndak tawu"
+3) "ndasmu"
 192.168.100.6:6379> 
 ```
