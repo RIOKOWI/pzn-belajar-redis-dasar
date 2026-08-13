@@ -582,6 +582,12 @@ PS C:\Users\owi\pzn-belajar-redis-dasar>
 - Secara default, ketika kita menyalakan redis server, redis server akan mendengarkan request dari semua network interface. Ini sangat berbahaya, karena bisa jadi redis terekspos secara public
 - Namun, redis punya second layer untuk pengecekan koneksi, yaitu mode protected, secara default mode protectednya aktif, artinya walaupun redis bisa diakses dari manapun, tapi redis hanya mau menerima request dari 127.0.0.1 (localhost)
 
+- set ip di file `config/redis.conf`
+```txt
+bind 192.168.100.6
+protected-mode yes
+```
+
 - example
 ```bash
 PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n 0
@@ -591,3 +597,10 @@ PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli -h 192.168.100.6 -p 6379 -n
 ```
 
 * note : gabakal bisa kirim perintah tanpa autentikasi karna protected mode nya aktif
+
+
+# Security
+## Authentication
+- Authentication adalah proses verifikasi identitas untuk memastikan bahwa yang mengakses adalah identitas yang benar
+- Redis memiliki fitur authentication, dan kita bisa menambahkannya di file konfigurasi di server redis
+- Namun perlu diingat, proses authentication di redis itu sangat cepat, jadi pastikan gunakan password sepanjang mungkin agar tidak mudah untuk di brute force 
