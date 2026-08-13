@@ -389,6 +389,39 @@ OK
 - Namun perlu diketahui, server redis tidak akan membalas tiap perintah yang dikirim via pipeline
 
 ## Operasi Pipeline Menggunakan Redis Cli
+- linux
 ```bash
 redis-cli -h host -p port -n database --pipe < input-file
+redis-cli -h localhost -p 6379 -n 1 --pipe < input-file.txt
+```
+
+- powershell
+```bash
+Get-Content .\input-file.txt | redis-cli -h localhost -p 6379 -n 0 --pipe
+Get-Content .\input-file.txt | memurai-cli -h localhost -p 6379 -n 0 --pipe # jika pakai memurai
+```
+
+- response 
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> Get-Content .\input-file.txt | memurai-cli -h localhost -p 6379 -n 0 --pipe
+All data transferred. Waiting for the last reply...
+Last reply received from server.
+errors: 0, replies: 4
+```
+
+## Result
+```bash
+PS C:\Users\owi\pzn-belajar-redis-dasar> memurai-cli                                                       
+127.0.0.1:6379> select 0
+OK
+127.0.0.1:6379> keys *
+1) "rui"
+2) "gibran"
+3) "rio"
+4) "jkw"
+127.0.0.1:6379> get rio
+"Rio Achyar"
+127.0.0.1:6379> get jkw
+"Joko Widodo"
+127.0.0.1:6379> 
 ```
