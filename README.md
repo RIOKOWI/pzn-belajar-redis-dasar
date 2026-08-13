@@ -733,3 +733,28 @@ OK
 - Ketika memory redis penuh, maka redis secara default akan mereject semua request penyimpanan data
 - Hal ini mungkin menjadi masalah ketika kita hanya menggunakan redis sebagai cache untuk media penyimpanan sementara
 - Kadang akan sangat berguna jika memory penuh, redis bisa secara otomatis menghapus data yang sudah jarang digunakan
+
+
+## Eviction
+- Redis mendukung fitur eviction (menghapus data lama, dan menerima data baru)
+- Namun untuk mengaktifkan fitur ini, kita perlu memberi tahu redis, maximum memory yang boleh digunakan, dan bagaimana strategi untuk melakukan eviction nya
+- `https://redis.io/docs/reference/eviction/`
+
+- set di file `config/redis.conf`
+```txt
+maxmemory 10mb // ini adalah jatah bytes yang boleh di gunakan redis di RAM
+maxmemory-policy allkeys-lru // Semua key, pilih yang paling lama tidak diakses.
+```
+
+| Policy            | Yang dihapus                                                     |
+| ----------------- | ---------------------------------------------------------------- |
+| `noeviction`      | Tidak menghapus apa pun, write baru ditolak saat RAM penuh.      |
+| `allkeys-lru`     | Semua key, pilih yang paling lama tidak diakses.                 |
+| `allkeys-lrm`     | Semua key, pilih yang paling lama tidak dimodifikasi.            |
+| `allkeys-lfu`     | Semua key, pilih yang paling jarang digunakan.                   |
+| `allkeys-random`  | Semua key, pilih secara acak.                                    |
+| `volatile-lru`    | Hanya key dengan TTL, pilih yang paling lama tidak diakses.      |
+| `volatile-lrm`    | Hanya key dengan TTL, pilih yang paling lama tidak dimodifikasi. |
+| `volatile-lfu`    | Hanya key dengan TTL, pilih yang paling jarang digunakan.        |
+| `volatile-random` | Hanya key dengan TTL, pilih secara acak.                         |
+| `volatile-ttl`    | Hanya key dengan TTL, pilih yang sisa TTL-nya paling pendek.     |
