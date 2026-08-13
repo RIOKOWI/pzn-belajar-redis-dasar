@@ -475,7 +475,7 @@ QUEUED
 QUEUED
 127.0.0.1:6379(TX)> set c3 "bedugul" # set key & value
 QUEUED
-127.0.0.1:6379(TX)> discard # rollback transaction
+127.0.0.1:6379(TX)> discard # rollback/batalkan transaction
 OK
 127.0.0.1:6379> keys *
 1) "brc"
@@ -483,3 +483,13 @@ OK
 3) "united"
 127.0.0.1:6379> 
 ```
+
+* note : semua command yang sudah di dahului command multi akan masuk ke antrean
+
+
+# Monitor
+## Monitor
+
+- Kadang ada kasus kita ingin mendebug aplikasi saat berkomunikasi dengan redis
+- Redis memiliki fitur monitor, yaitu fitur untuk memonitor semua request yang masuk ke redis server
+- Dengan fitur ini kita bisa mudah mendebug jika ternyata ada perintah yang salah yang dikirim oleh aplikasi kita ke redis server
